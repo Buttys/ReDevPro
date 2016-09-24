@@ -16,7 +16,7 @@ namespace ReDevPro
 
             //Add web tabs
             WebTab Chat = new WebTab("https://discord.gg/zUqJTYP") { Text = "Chat" };
-            WebTab News = new WebTab("https://ygodevpro.com/forum/index.php/Board/14-Announcements/") { Text = "News" };
+            WebTab News = new WebTab("https://ygodevpro.com/index.php/NewsOverview/") { Text = "News" };
             WebTab BugTracker = new WebTab("https://ygodevpro.com/forum/bugs/") { Text = "BugTracker" };
             IntPtr h = MainTabControl.Handle; //required for insert to work
             MainTabControl.TabPages.Insert(0, Chat);
