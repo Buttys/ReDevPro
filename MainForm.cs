@@ -49,7 +49,6 @@ namespace ReDevPro
             YGOProOptionsControl.Items.Add("Enable Sound", Config.GetBool("Enable Sound", true));
             YGOProOptionsControl.Items.Add("Enable Music", Config.GetBool("Enable Music", true));
             YGOProOptionsControl.Items.Add("Enable Direct X", Config.GetBool("Enable Direct X", false));
-            YGOProOptionsControl.Items.Add("Old Replay Mode", Config.GetBool("Old Replay Mode", true));
         }
 
         private void UpdateOptions(object sender, ItemCheckEventArgs e)
