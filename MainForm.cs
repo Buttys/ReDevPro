@@ -15,7 +15,7 @@ namespace ReDevPro
 
             //Add web tabs
             WebTab Chat = new WebTab("https://discord.gg/zUqJTYP") { Text = "Chat" };
-            WebTab News = new WebTab("https://ygodevpro.com/forum/index.php/Board/14-Announcements/") { Text = "News" };
+            WebTab News = new WebTab("https://ygodevpro.com/index.php/NewsOverview/") { Text = "News" };
             WebTab BugTracker = new WebTab("https://ygodevpro.com/forum/bugs/") { Text = "BugTracker" };
             IntPtr h = MainTabControl.Handle; //required for insert to work
             MainTabControl.TabPages.Insert(0, Chat);
@@ -49,6 +49,7 @@ namespace ReDevPro
             YGOProOptionsControl.Items.Add("Enable Sound", Config.GetBool("Enable Sound", true));
             YGOProOptionsControl.Items.Add("Enable Music", Config.GetBool("Enable Music", true));
             YGOProOptionsControl.Items.Add("Enable Direct X", Config.GetBool("Enable Direct X", false));
+            YGOProOptionsControl.Items.Add("Old Replay Mode", Config.GetBool("Old Replay Mode", true));
         }
 
         private void UpdateOptions(object sender, ItemCheckEventArgs e)
