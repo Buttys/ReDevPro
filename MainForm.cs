@@ -11,6 +11,7 @@ namespace ReDevPro
         public MainForm()
         {
             InitializeComponent();
+            Cef.EnableHighDPISupport();
             Cef.Initialize(new CefSettings()); //required for cefsharp to work, only needs to be called once
 
             //Add web tabs
