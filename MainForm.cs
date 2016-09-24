@@ -1,4 +1,3 @@
-﻿
 using CefSharp;
 using ReDevPro.Components;
 using System;
@@ -10,13 +9,13 @@ namespace ReDevPro
     {
         public MainForm()
         {
-            InitializeComponent();
             Cef.EnableHighDPISupport();
+            InitializeComponent();
             Cef.Initialize(new CefSettings()); //required for cefsharp to work, only needs to be called once
 
             //Add web tabs
             WebTab Chat = new WebTab("https://discord.gg/zUqJTYP") { Text = "Chat" };
-            WebTab News = new WebTab("https://ygodevpro.com/index.php/NewsOverview/") { Text = "News" };
+            WebTab News = new WebTab("https://ygodevpro.com/forum/index.php/Board/14-Announcements/") { Text = "News" };
             WebTab BugTracker = new WebTab("https://ygodevpro.com/forum/bugs/") { Text = "BugTracker" };
             IntPtr h = MainTabControl.Handle; //required for insert to work
             MainTabControl.TabPages.Insert(0, Chat);
@@ -70,6 +69,20 @@ namespace ReDevPro
         private void AiBtn_Click(object sender, EventArgs e)
         {
             YGOProHelper.OpenAI();
+        }
+
+        private void DuelBtn_Click(object sender, EventArgs e)
+        {
+            YGOProHelper.OpenDuel();
+        }
+        private void panel3_Resize(object sender, EventArgs e)
+        {
+            panel3.Height = this.Height;
+        }
+
+        private void Backup_Resize(object sender, EventArgs e)
+        {
+            Backup.Width = this.Width;
         }
     }
 }
