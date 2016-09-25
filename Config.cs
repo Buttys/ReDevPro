@@ -12,6 +12,14 @@ namespace ReDevPro
         private static char COMMENT_CHAR = '#';
 
         private static Dictionary<string, string> _fields = new Dictionary<string, string>();
+       
+        struct Server
+        {
+            public string Address;
+            public int Port;
+        };
+
+        private static Dictionary<string, Server> _servers = new Dictionary<string, Server>();
 
         public static void Load(string[] args)
         {
@@ -143,10 +151,37 @@ namespace ReDevPro
             return fields;
         }
 
+        public static void AddServer(string key, string address, int port)
+        {
+            if (!_servers.ContainsKey(key))
+                _servers.Add(key, new Server() { Address = address, Port = port });
+        }
+
+        public static string GetServerIP(string key, string defaultValue = "127.0.0.1")
+        {
+            if (_servers.ContainsKey(key))
+                return _servers[key].Address;
+            return defaultValue;
+        }
+
+        public static string[] GetServerList()
+        {
+            return new List<string>(_servers.Keys).ToArray();
+        }
+
+        public static int GetServerPort(string key, int defaultValue = 8911)
+        {
+            if (_servers.ContainsKey(key))
+                return _servers[key].Port;
+            return defaultValue;
+        }
+
         public static string GetString(string key, string defaultValue = null)
         {
             if (_fields.ContainsKey(key))
                 return _fields[key];
+            else
+                _fields.Add(key, defaultValue);
             return defaultValue;
         }
 
@@ -184,8 +219,15 @@ namespace ReDevPro
 
         public static void UpdateBool(string key, bool value)
         {
+            UpdateString(key, value ? "1" : "0");
+        }
+
+        public static void UpdateString(string key, string value)
+        {
             if (_fields.ContainsKey(key))
-                _fields[key] = value ? "1" : "0";
+                _fields[key] = value;
+            else
+                _fields.Add(key, value);
         }
 
         public static void SaveConfig()

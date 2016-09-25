@@ -25,7 +25,10 @@ namespace ReDevPro
             MainTabControl.SelectedIndex = 0;
 
             //Server Select
-            ServerSelect.Items.Add("LocalHost");
+            Config.AddServer("Butty's Test Server", "81.98.22.127", 8911);
+            Config.AddServer("LocalHost", "127.0.0.1", 8911);
+            ServerSelect.Items.AddRange(Config.GetServerList());
+            ServerSelect.SelectedIndexChanged += UpdateSelectedServer;
             ServerSelect.SelectedIndex = 0;
 
             //options
@@ -49,12 +52,31 @@ namespace ReDevPro
             YGOProOptionsControl.Items.Add("Enable Sound", Config.GetBool("Enable Sound", true));
             YGOProOptionsControl.Items.Add("Enable Music", Config.GetBool("Enable Music", true));
             YGOProOptionsControl.Items.Add("Enable Direct X", Config.GetBool("Enable Direct X", false));
+
+            //settings that need to be added
+            Config.GetString("nickname", "Tester-" + Program.Random.Next(999));
+            Config.GetInt("sound_volume", 100);
+            Config.GetInt("music_volume", 100);
+            Config.GetString("textfont", "fonts/simhei.ttf 12");
+            Config.GetString("numfont", "fonts/arialbd.ttf");
+            Config.GetInt("skin_index", 0);
         }
 
         private void UpdateOptions(object sender, ItemCheckEventArgs e)
         {
             Config.UpdateBool(YGOProOptionsControl.SelectedItem.ToString(), e.NewValue == CheckState.Checked);
             Config.SaveConfig();
+        }
+
+        private void UpdateSelectedServer(object sender, EventArgs e)
+        {
+            if (ServerSelect.SelectedIndex != -1)
+            {
+                string selected = ServerSelect.SelectedItem.ToString();
+                Config.UpdateString("lastip", Config.GetServerIP(selected));
+                Config.UpdateString("serverport", Config.GetServerPort(selected).ToString());
+                Config.UpdateString("lastport", Config.GetServerPort(selected).ToString());
+            }
         }
 
         private void DeckEditBtn_Click(object sender, EventArgs e)
