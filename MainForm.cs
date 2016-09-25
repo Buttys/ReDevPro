@@ -37,8 +37,7 @@ namespace ReDevPro
         {
             YGOProOptionsControl.Items.Add("Auto Placement", Config.GetBool("Auto Placement", true));
             YGOProOptionsControl.Items.Add("Auto Chain", Config.GetBool("Auto Chain", true));
-            YGOProOptionsControl.Items.Add("Random Placement", Config.GetBool("Auto-Placement", false));
-            YGOProOptionsControl.Items.Add("Enable User Covers", Config.GetBool("Enable User Covers", true));
+            YGOProOptionsControl.Items.Add("Random Placement", Config.GetBool("Random Placement", false));
             YGOProOptionsControl.Items.Add("No Chain Delay", Config.GetBool("No Chain Delay", false));
             YGOProOptionsControl.Items.Add("Mute Opponents", Config.GetBool("Mute Opponents", false));
             YGOProOptionsControl.Items.Add("Mute Spectators", Config.GetBool("Mute Spectators", false));
@@ -55,6 +54,7 @@ namespace ReDevPro
         private void UpdateOptions(object sender, ItemCheckEventArgs e)
         {
             Config.UpdateBool(YGOProOptionsControl.SelectedItem.ToString(), e.NewValue == CheckState.Checked);
+            Config.SaveConfig();
         }
 
         private void DeckEditBtn_Click(object sender, EventArgs e)

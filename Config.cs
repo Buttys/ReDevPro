@@ -7,13 +7,11 @@ namespace ReDevPro
 {
     public static class Config
     {
-        private static string CONFIG_FILE_OPTION = "Config";
+        private static string CONFIG_FILE = "system.conf";
         private static char SEPARATOR_CHAR = '=';
         private static char COMMENT_CHAR = '#';
 
         private static Dictionary<string, string> _fields = new Dictionary<string, string>();
-        private static Dictionary<string, int> _integerCache = new Dictionary<string, int>();
-        private static Dictionary<string, bool> _booleanCache = new Dictionary<string, bool>();
 
         public static void Load(string[] args)
         {
@@ -21,7 +19,7 @@ namespace ReDevPro
             {
                 LoadArgs(args);
 
-                string filename = GetString(CONFIG_FILE_OPTION);
+                string filename = CONFIG_FILE;
                 if (filename != null)
                 {
                     Dictionary<string, string> fileFields = LoadFile(filename);
@@ -48,7 +46,7 @@ namespace ReDevPro
 
                 if (position != -1)
                 {
-                    string key = option.Substring(0, position).Trim().ToUpper();
+                    string key = option.Substring(0, position).Trim();
                     string value = option.Substring(position + 1).Trim();
 
                     if (_fields.ContainsKey(key))
@@ -80,13 +78,63 @@ namespace ReDevPro
 
                     if (position != -1)
                     {
-                        string key = line.Substring(0, position).Trim().ToUpper();
+                        string key = line.Substring(0, position).Trim();
                         string value = line.Substring(position + 1).Trim();
 
                         if (_fields.ContainsKey(key))
                             Console.Write("Config", "Duplicate setting found: " + key);
                         else
-                            _fields.Add(key, value);
+                        {
+                            //alter how some values are loaded
+                            switch (key)
+                            {
+                                case "use_d3d":
+                                    _fields.Add("Enable Direct X", value);
+                                    break;
+                                case "auto_card_placing":
+                                    _fields.Add("Auto Placement", value);
+                                    break;
+                                case "auto_chain_order":
+                                    _fields.Add("Auto Chain", value);
+                                    break;
+                                case "random_card_placing":
+                                    _fields.Add("Random Placement", value);
+                                    break;
+                                case "no_delay_for_chain":
+                                    _fields.Add("No Chain Delay", value);
+                                    break;
+                                case "mute_opponent":
+                                    _fields.Add("Mute Opponents", value);
+                                    break;
+                                case "mute_spectators":
+                                    _fields.Add("Mute Spectators", value);
+                                    break;
+                                case "save_last_replay":
+                                    _fields.Add("Save Last Replay", value);
+                                    break;
+                                case "control_mode":
+                                    _fields.Add("Mouse Mode", value);
+                                    break;
+                                case "hide_setname":
+                                    _fields.Add("Hide Setnames", value);
+                                    break;
+                                case "hide_chain_button":
+                                    _fields.Add("Hide Chain Buttons", value);
+                                    break;
+                                case "old_replay_mode":
+                                    _fields.Add("Old Replay Mode", value);
+                                    break;
+                                case "enable_sound":
+                                    _fields.Add("Enable Sound", value);
+                                    break;
+                                case "enable_music":
+                                    _fields.Add("Enable Music", value);
+                                    break;
+                                default:
+                                    _fields.Add(key, value);
+                                    break;
+                            }
+                        }
                     }
                     else
                         Console.Write("Config", "No separator found for: " + line);
@@ -97,7 +145,6 @@ namespace ReDevPro
 
         public static string GetString(string key, string defaultValue = null)
         {
-            key = key.ToUpper();
             if (_fields.ContainsKey(key))
                 return _fields[key];
             return defaultValue;
@@ -105,12 +152,6 @@ namespace ReDevPro
 
         public static int GetInt(string key, int defaultValue = 0)
         {
-            key = key.ToUpper();
-
-            // Use a cache to prevent doing the string to int conversion over and over
-            if (_integerCache.ContainsKey(key))
-                return _integerCache[key];
-
             int value = defaultValue;
             if (_fields.ContainsKey(key))
             {
@@ -119,7 +160,8 @@ namespace ReDevPro
                 else
                     value = Convert.ToInt32(_fields[key]);
             }
-            _integerCache.Add(key, value);
+            else
+                _fields.Add(key, defaultValue.ToString());
             return value;
         }
 
@@ -130,27 +172,80 @@ namespace ReDevPro
 
         public static bool GetBool(string key, bool defaultValue = false)
         {
-            key = key.ToUpper();
-
-            // Same here, prevent from redoing the string to bool conversion
-            if (_booleanCache.ContainsKey(key))
-                return _booleanCache[key];
-
             bool value = defaultValue;
             if (_fields.ContainsKey(key))
             {
-                value = Convert.ToBoolean(_fields[key]);
+                value =  Convert.ToInt32(_fields[key]) > 0;
             }
-            _booleanCache.Add(key, value);
+            else
+                _fields.Add(key, defaultValue ? "1" : "0");
             return value;
         }
 
         public static void UpdateBool(string key, bool value)
         {
-            key = key.ToUpper();
+            if (_fields.ContainsKey(key))
+                _fields[key] = value ? "1" : "0";
+        }
 
-            if (_booleanCache.ContainsKey(key))
-                _booleanCache[key] = value;
+        public static void SaveConfig()
+        {
+            using (StreamWriter writer = new StreamWriter(CONFIG_FILE))
+            {
+                writer.WriteLine("#Generated by Re:DevPro");
+                foreach (string key in _fields.Keys)
+                {
+                    //alter how some values are saved
+                    switch (key)
+                    {
+                        case "Enable Direct X":
+                            writer.WriteLine("use_d3d = {0}", _fields[key]);
+                            break;
+                        case "Auto Placement":
+                            writer.WriteLine("auto_card_placing = {0}", _fields[key]);
+                            break;
+                        case "Auto Chain":
+                            writer.WriteLine("auto_chain_order = {0}", _fields[key]);
+                            break;
+                        case "Random Placement":
+                            writer.WriteLine("random_card_placing = {0}", _fields[key]);
+                            break;
+                        case "No Chain Delay":
+                            writer.WriteLine("no_delay_for_chain = {0}", _fields[key]);
+                            break;
+                        case "Mute Opponents":
+                            writer.WriteLine("mute_opponent = {0}", _fields[key]);
+                            break;
+                        case "Mute Spectators":
+                            writer.WriteLine("mute_spectators = {0}", _fields[key]);
+                            break;
+                        case "Save Last Replay":
+                            writer.WriteLine("save_last_replay = {0}", _fields[key]);
+                            break;
+                        case "Mouse Mode":
+                            writer.WriteLine("control_mode = {0}", _fields[key]);
+                            break;
+                        case "Hide Setnames":
+                            writer.WriteLine("hide_setname = {0}", _fields[key]);
+                            break;
+                        case "Hide Chain Buttons":
+                            writer.WriteLine("hide_chain_button = {0}", _fields[key]);
+                            break;
+                        case "Old Replay Mode":
+                            writer.WriteLine("old_replay_mode = {0}", _fields[key]);
+                            break;
+                        case "Enable Sound":
+                            writer.WriteLine("enable_sound = {0}", _fields[key]);
+                            break;
+                        case "Enable Music":
+                            writer.WriteLine("enable_music = {0}", _fields[key]);
+                            break;
+                        default:
+                            writer.WriteLine("{0} = {1}", key.ToLower(), _fields[key]);
+                            break;
+                    }
+                }
+            }
         }
     }
 }
