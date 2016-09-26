@@ -1,4 +1,3 @@
-﻿
 using CefSharp;
 using ReDevPro.Components;
 using System;
@@ -92,6 +91,55 @@ namespace ReDevPro
         private void AiBtn_Click(object sender, EventArgs e)
         {
             YGOProHelper.OpenAI();
+        }
+        
+                private void DuelBtn_Click(object sender, EventArgs e)
+        {
+            YGOProHelper.OpenDuel();
+        }
+        private void panel3_Resize(object sender, EventArgs e)
+        {
+            panel3.Height = this.Height;
+        }
+
+        private void Backup_Resize(object sender, EventArgs e)
+        {
+            Backup.Width = this.Width;
+        }
+
+        private void PreviewContent_Click(object sender, EventArgs e)
+        {
+            if(FileList.SelectedItem != null)
+            {
+                //Link to Texture Folder
+                string basePath = @"";
+                pictureBox1.ImageLocation = Path.Combine(basePath, FileList.SelectedItem.ToString());
+            }
+            
+        }
+
+        private void ThemeAdd_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files (*.jpg, *.jpeg, *png)|*.jpg;*.jpeg;*.png";
+            open.FilterIndex = 1;
+            DialogResult result = open.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                //Adds image name to file list
+                FileList.Items.Add(open.SafeFileName);
+                pictureBox1.Image = Image.FromFile(open.FileName);
+
+                //Saving the pic. This path will be saved to the texture folder.
+                pictureBox1.Image.Save(@"");
+                FileList.Show();
+            }
+        }
+
+        public void HideComps()
+        {
+            FileList.Hide();
         }
     }
 }
