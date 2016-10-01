@@ -124,7 +124,7 @@ namespace ReDevPro
                 FileList.Items.Add(open.SafeFileName);
                 pictureBox1.Image = Image.FromFile(open.FileName);
 
-                ContentScroll.Items.Add(open.SafeFileName);
+                ContentSelect.Items.Add(open.SafeFileName);
 
 
                 //Saving the pic. This path will be saved to the texture folder.
