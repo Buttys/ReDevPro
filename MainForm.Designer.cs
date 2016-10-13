@@ -1,4 +1,4 @@
-﻿namespace ReDevPro
+namespace ReDevPro
 {
     partial class MainForm
     {
@@ -32,7 +32,12 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.CustomizeTab = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.FilesPrev = new System.Windows.Forms.GroupBox();
+            this.FileList = new System.Windows.Forms.ListBox();
             this.OptionsTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,9 +59,26 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ServerSelectTxt = new System.Windows.Forms.Label();
             this.ServerSelect = new System.Windows.Forms.ComboBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ThemeScroll = new System.Windows.Forms.ComboBox();
+            this.Theme = new System.Windows.Forms.Label();
+            this.AddContent = new System.Windows.Forms.Button();
+            this.Backup = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.ContentSelect = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.MainTabControl.SuspendLayout();
             this.CustomizeTab.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.FilesPrev.SuspendLayout();
             this.OptionsTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -67,6 +89,10 @@
             this.MenuLayout.SuspendLayout();
             this.MenuPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -98,31 +124,101 @@
             // 
             // CustomizeTab
             // 
-            this.CustomizeTab.Controls.Add(this.label1);
+            this.CustomizeTab.Controls.Add(this.tableLayoutPanel4);
             this.CustomizeTab.Location = new System.Drawing.Point(4, 22);
             this.CustomizeTab.Name = "CustomizeTab";
-            this.CustomizeTab.Padding = new System.Windows.Forms.Padding(3);
+            this.CustomizeTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.CustomizeTab.Size = new System.Drawing.Size(904, 411);
             this.CustomizeTab.TabIndex = 2;
             this.CustomizeTab.Text = "Customize";
             this.CustomizeTab.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // tableLayoutPanel4
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(898, 405);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Buttys was here. Try again later!";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.34146F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.65854F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 170F));
+            this.tableLayoutPanel4.Controls.Add(this.groupBox5, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.groupBox4, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.FilesPrev, 0, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(898, 405);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Location = new System.Drawing.Point(729, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Size = new System.Drawing.Size(167, 401);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Options";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.pictureBox1);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox4.Location = new System.Drawing.Point(339, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Size = new System.Drawing.Size(386, 401);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Preview";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 15);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(382, 384);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // FilesPrev
+            // 
+            this.FilesPrev.Controls.Add(this.FileList);
+            this.FilesPrev.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FilesPrev.Location = new System.Drawing.Point(2, 2);
+            this.FilesPrev.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FilesPrev.Name = "FilesPrev";
+            this.FilesPrev.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FilesPrev.Size = new System.Drawing.Size(333, 401);
+            this.FilesPrev.TabIndex = 2;
+            this.FilesPrev.TabStop = false;
+            this.FilesPrev.Text = "Files";
+            // 
+            // FileList
+            // 
+            this.FileList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FileList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FileList.FormattingEnabled = true;
+            this.FileList.Location = new System.Drawing.Point(2, 15);
+            this.FileList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FileList.Name = "FileList";
+            this.FileList.Size = new System.Drawing.Size(329, 384);
+            this.FileList.TabIndex = 4;
             // 
             // OptionsTab
             // 
             this.OptionsTab.Controls.Add(this.tableLayoutPanel2);
             this.OptionsTab.Location = new System.Drawing.Point(4, 22);
             this.OptionsTab.Name = "OptionsTab";
-            this.OptionsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.OptionsTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.OptionsTab.Size = new System.Drawing.Size(904, 411);
             this.OptionsTab.TabIndex = 3;
             this.OptionsTab.Text = "Options";
@@ -231,7 +327,7 @@
             this.AboutTab.Controls.Add(this.AboutTxt);
             this.AboutTab.Location = new System.Drawing.Point(4, 22);
             this.AboutTab.Name = "AboutTab";
-            this.AboutTab.Padding = new System.Windows.Forms.Padding(3);
+            this.AboutTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.AboutTab.Size = new System.Drawing.Size(904, 411);
             this.AboutTab.TabIndex = 1;
             this.AboutTab.Text = "About";
@@ -343,6 +439,137 @@
             this.ServerSelect.Size = new System.Drawing.Size(121, 21);
             this.ServerSelect.TabIndex = 0;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.panel4, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 15);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(163, 384);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.ThemeScroll);
+            this.panel3.Controls.Add(this.Theme);
+            this.panel3.Controls.Add(this.AddContent);
+            this.panel3.Controls.Add(this.Backup);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(159, 312);
+            this.panel3.TabIndex = 5;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(80, 43);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(66, 29);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // ThemeScroll
+            // 
+            this.ThemeScroll.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ThemeScroll.FormattingEnabled = true;
+            this.ThemeScroll.Location = new System.Drawing.Point(52, 77);
+            this.ThemeScroll.Name = "ThemeScroll";
+            this.ThemeScroll.Size = new System.Drawing.Size(96, 21);
+            this.ThemeScroll.TabIndex = 10;
+            // 
+            // Theme
+            // 
+            this.Theme.AutoSize = true;
+            this.Theme.Location = new System.Drawing.Point(12, 79);
+            this.Theme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Theme.Name = "Theme";
+            this.Theme.Size = new System.Drawing.Size(40, 13);
+            this.Theme.TabIndex = 9;
+            this.Theme.Text = "Theme";
+            // 
+            // AddContent
+            // 
+            this.AddContent.Location = new System.Drawing.Point(10, 43);
+            this.AddContent.Margin = new System.Windows.Forms.Padding(2);
+            this.AddContent.Name = "AddContent";
+            this.AddContent.Size = new System.Drawing.Size(66, 29);
+            this.AddContent.TabIndex = 6;
+            this.AddContent.Text = "Add";
+            this.AddContent.UseVisualStyleBackColor = true;
+            // 
+            // Backup
+            // 
+            this.Backup.AutoSize = true;
+            this.Backup.Location = new System.Drawing.Point(10, 10);
+            this.Backup.Margin = new System.Windows.Forms.Padding(2);
+            this.Backup.Name = "Backup";
+            this.Backup.Size = new System.Drawing.Size(137, 29);
+            this.Backup.TabIndex = 4;
+            this.Backup.Text = "Back Up";
+            this.Backup.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 319);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(157, 62);
+            this.panel4.TabIndex = 6;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Transparent;
+            this.panel5.Controls.Add(this.button3);
+            this.panel5.Controls.Add(this.button4);
+            this.panel5.Controls.Add(this.ContentSelect);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(157, 62);
+            this.panel5.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(7, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(66, 29);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(80, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(66, 29);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Preview";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // ContentSelect
+            // 
+            this.ContentSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ContentSelect.FormattingEnabled = true;
+            this.ContentSelect.Location = new System.Drawing.Point(9, 38);
+            this.ContentSelect.Name = "ContentSelect";
+            this.ContentSelect.Size = new System.Drawing.Size(138, 21);
+            this.ContentSelect.TabIndex = 13;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,6 +582,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.MainTabControl.ResumeLayout(false);
             this.CustomizeTab.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.FilesPrev.ResumeLayout(false);
             this.OptionsTab.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -367,6 +599,11 @@
             this.MenuPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -387,7 +624,6 @@
         private System.Windows.Forms.TabPage AboutTab;
         private System.Windows.Forms.Label AboutTxt;
         private System.Windows.Forms.TabPage CustomizeTab;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage OptionsTab;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -398,6 +634,23 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox YGOProSkin;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox FileList;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox FilesPrev;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox ThemeScroll;
+        private System.Windows.Forms.Label Theme;
+        private System.Windows.Forms.Button AddContent;
+        private System.Windows.Forms.Button Backup;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.ComboBox ContentSelect;
     }
 }
-

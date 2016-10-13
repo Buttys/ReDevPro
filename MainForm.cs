@@ -1,7 +1,8 @@
-﻿
 using CefSharp;
 using ReDevPro.Components;
 using System;
+using System.IO;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ReDevPro
@@ -10,9 +11,9 @@ namespace ReDevPro
     {
         public MainForm()
         {
-            InitializeComponent();
             Cef.EnableHighDPISupport();
             Cef.Initialize(new CefSettings()); //required for cefsharp to work, only needs to be called once
+            InitializeComponent();
 
             //Add web tabs
             WebTab Chat = new WebTab("https://discord.gg/zUqJTYP") { Text = "Chat" };
@@ -92,6 +93,51 @@ namespace ReDevPro
         private void AiBtn_Click(object sender, EventArgs e)
         {
             YGOProHelper.OpenAI();
+        }
+
+        private void DuelBtn_Click(object sender, EventArgs e)
+        {
+            YGOProHelper.OpenDuel();
+        }
+
+        private void PreviewContent_Click(object sender, EventArgs e)
+        {
+            if (FileList.SelectedItem != null)
+            {
+                //Link to Texture Folder
+                string basePath = @"";
+                pictureBox1.ImageLocation = Path.Combine(basePath, FileList.SelectedItem.ToString());
+            }
+
+        }
+
+        private void ThemeAdd_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files (*.jpg, *.jpeg, *png)|*.jpg;*.jpeg;*.png";
+            open.FilterIndex = 1;
+            DialogResult result = open.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                //Adds image name to file list
+                FileList.Items.Add(open.SafeFileName);
+                pictureBox1.Image = Image.FromFile(open.FileName);
+
+                ContentSelect.Items.Add(open.SafeFileName);
+
+
+                //Saving the pic. This path will be saved to the texture folder.
+                pictureBox1.Image.Save(@"");
+                FileList.Show();
+
+
+            }
+        }
+
+        public void HideComps()
+        {
+            FileList.Hide();
         }
     }
 }
