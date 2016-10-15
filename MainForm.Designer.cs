@@ -380,6 +380,7 @@ namespace ReDevPro
             this.QuickDuelBtn.TabIndex = 0;
             this.QuickDuelBtn.Text = "Duel!";
             this.QuickDuelBtn.UseVisualStyleBackColor = true;
+            this.QuickDuelBtn.Click += new System.EventHandler(this.QuickDuelBtn_Click);
             // 
             // DeckEditBtn
             // 

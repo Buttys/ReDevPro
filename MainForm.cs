@@ -139,5 +139,10 @@ namespace ReDevPro
         {
             FileList.Hide();
         }
+
+        private void QuickDuelBtn_Click(object sender, EventArgs e)
+        {
+            YGOProHelper.OpenDuel();
+        }
     }
 }

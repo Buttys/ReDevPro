@@ -53,17 +53,8 @@ namespace ReDevPro
 
         public static void OpenDuel()
         {
-
-        }
-
-        private static void SaveConfig()
-        {
-
-        }
-
-        private static void LoadConfig()
-        {
-
+            Config.SaveConfig();
+            Open("-c");
         }
     }
 }
